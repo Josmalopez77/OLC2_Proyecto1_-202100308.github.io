@@ -1,5 +1,5 @@
-import { parse } from './analizador.js'
-import { InterpreterVisitor } from './interprete.js'
+import { parse } from './analizador2.js'
+import { CompilerVisitor } from './compilador.js'
 import {Almacenamiento} from './almacenamiento.js'
 
 
@@ -22,7 +22,7 @@ btn.addEventListener('click', () => {
         const sentencias = parse(codigoFuente)
         // ast.innerHTML = JSON.stringify(sentencias, null, 2)
 
-        const interprete = new InterpreterVisitor(almacenamiento)
+        const interprete = new CompilerVisitor()
 
         // for (const sentencia of sentencias) {
         //     sentencia.accept(interprete)
@@ -30,7 +30,7 @@ btn.addEventListener('click', () => {
         console.log({ sentencias })
         sentencias.forEach(sentencia => sentencia.accept(interprete))
 
-        salida.value = interprete.salida
+        salida.value = interprete.code.toString().replace(/\n/g, '\n')
 
     } catch (error) {
         console.log(error)

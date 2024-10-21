@@ -1,3 +1,4 @@
+
 /**
 
  * @typedef {import('./nodos').Expresion} Expresion
@@ -12,14 +13,7 @@
  * @typedef {import('./nodos').Agrupacion} Agrupacion
 
 
- * @typedef {import('./nodos').Numero} Numero
-
- * @typedef {import('./nodos').Float} Float
-
-* @typedef {import('./nodos').String} String
-
-    * @typedef {import('./nodos').Boolean} Boolean
-* @typedef {import('./nodos').Char} Char
+ * @typedef {import('./nodos').Primitivo} Primitivo
 
 
  * @typedef {import('./nodos').DeclaracionVariable} DeclaracionVariable
@@ -39,8 +33,6 @@
 
  * @typedef {import('./nodos').Bloque} Bloque
 
-* @typedef {import('./nodos').Ternario} Ternario
-
 
  * @typedef {import('./nodos').If} If
 
@@ -49,8 +41,6 @@
 
 
  * @typedef {import('./nodos').For} For
-
-    * @typedef {import('./nodos').Switch} Switch
 
 
  * @typedef {import('./nodos').Break} Break
@@ -65,10 +55,13 @@
  * @typedef {import('./nodos').Llamada} Llamada
 
 
- * @typedef {import('./nodos').DeclaracionFuncion} DeclaracionFuncion
+ * @typedef {import('./nodos').FuncDcl} FuncDcl
 
 
- * @typedef {import('./nodos').DeclaracionClase} DeclaracionClase
+ * @typedef {import('./nodos').Param} Param
+
+
+ * @typedef {import('./nodos').ClassDcl} ClassDcl
 
 
  * @typedef {import('./nodos').Instancia} Instancia
@@ -76,7 +69,11 @@
 
  * @typedef {import('./nodos').Get} Get
 
+
+ * @typedef {import('./nodos').Set} Set
+
  */
+
 
 /**
  * Clase base para los visitantes
@@ -122,44 +119,13 @@ export class BaseVisitor {
     
 
     /**
-     * @param {Numero} node
+     * @param {Primitivo} node
      * @returns {any}
      */
-    visitNumero(node) {
-        throw new Error('Metodo visitNumero no implementado');
-    }
-
-        /**
-     * @param {String} node
-     * @returns {any}
-     */
-        visitString(node) {
-            throw new Error('Metodo visitNumero no implementado');
-        }
-
-            /**
-     * @param {Boolean} node
-     * @returns {any}
-     */
-    visitBoolean(node) {
-        throw new Error('Metodo visitNumero no implementado');
+    visitPrimitivo(node) {
+        throw new Error('Metodo visitPrimitivo no implementado');
     }
     
-    /**
-     * @param {Float} node
-     * @returns {any}
-     */
-    visitFloat(node) {
-        throw new Error('Metodo visitNumero no implementado');
-    }
-
-        /**
-     * @param {Char} node
-     * @returns {any}
-     */
-        visitChar(node) {
-            throw new Error('Metodo visitNumero no implementado');
-        }
 
     /**
      * @param {DeclaracionVariable} node
@@ -240,14 +206,6 @@ export class BaseVisitor {
     visitFor(node) {
         throw new Error('Metodo visitFor no implementado');
     }
-
-        /**
-     * @param {Switch} node
-     * @returns {any}
-     */
-        visitSwitch(node) {
-            throw new Error('Metodo visitSwitch no implementado');
-        }
     
 
     /**
@@ -258,14 +216,6 @@ export class BaseVisitor {
         throw new Error('Metodo visitBreak no implementado');
     }
     
-/**
-     * @param {Ternario} node
-     * @returns {any}
-     */
-visitTernario(node) {
-    throw new Error('Metodo visitTernario no implementado');
-}
-
 
     /**
      * @param {Continue} node
@@ -292,32 +242,33 @@ visitTernario(node) {
     visitLlamada(node) {
         throw new Error('Metodo visitLlamada no implementado');
     }
+    
 
-     /**
-     * @param {DeclaracionFuncion} node
+    /**
+     * @param {FuncDcl} node
      * @returns {any}
      */
-    visitFuncDeclaracionFuncion(node) {
+    visitFuncDcl(node) {
         throw new Error('Metodo visitFuncDcl no implementado');
     }
     
 
     /**
-     * @param {DeclaracionClase} node
+     * @param {Param} node
      * @returns {any}
      */
-    visitDeclaracionClase(node) {
-        throw new Error('Metodo visitClassDcl no implementado');
+    visitParam(node) {
+        throw new Error('Metodo visitParam no implementado');
     }
+    
 
     /**
-         * @param {Struct} node
-         * @returns {any}
-         */
-    visitStruct(node) {
-        throw new Error('Metodo visitStruct no implementado');
+     * @param {ClassDcl} node
+     * @returns {any}
+     */
+    visitClassDcl(node) {
+        throw new Error('Metodo visitClassDcl no implementado');
     }
-
     
 
     /**
